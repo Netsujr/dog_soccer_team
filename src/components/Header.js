@@ -17,4 +17,5 @@ const Container = styled.div`
   align-items: center;
   height: 85px;
   background-color: rgba(130, 230, 0, 0.5);
+  min-width: 100vw;
 `;
