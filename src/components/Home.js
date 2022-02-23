@@ -4,10 +4,10 @@ import Heading from './Heading';
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Heading />
       <DogList/>
-    </div>
+    </>
   );
 };
 
