@@ -6,14 +6,17 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 const AddDog = () => {
   return (
     <FormContainer>
-    <Form>
-      <FormGroup>
-        <Label for="name">Add a Dog to Team</Label>
-        <Input type="text" name="name" id="name" placeholder="Name" />
-      </FormGroup>
-      <Button>Submit</Button>
-      <Link to='/' className='btn btn-danger'>Home</Link>
-    </Form>
+      <Form>
+        <FormGroup>
+          <Label for="name">Add a Dog to Team</Label>
+          <Input type="text" name="name" id="name" placeholder="Name" />
+        </FormGroup>
+        <ButtonsContainer>
+          <Button>Submit</Button>
+          <Link to='/' className='btn btn-danger'>Home</Link>
+
+        </ButtonsContainer>
+      </Form>
     </FormContainer>
   );
 };
@@ -30,4 +33,11 @@ const FormContainer = styled.div`
   margin-top: 2rem;
   border-radius: 5px;
   border: 1px solid #e5e5e5;
-`;
+  `;
+
+  const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  `;
