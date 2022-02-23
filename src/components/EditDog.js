@@ -1,9 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalState';
+import { v4 as uuid } from 'uuid';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const EditDog = () => {
+  // const { addDog } = useContext(GlobalContext);
+  // const [dogName, setDogName] = useState('');
+  // const [breed, setBreed] = useState('');
+  // const [age, setAge] = useState('');
+  // const [goals, setGoals] = useState('');
+  // const navigate = useNavigate();
+
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const newDog = {
+  //     id: uuid(),
+  //     name: e.target.name.value,
+  //     breed: e.target.breed.value,
+  //     age: e.target.age.value,
+  //     goals: e.target.goals.value,
+  //   };
+  //   addDog(newDog);
+  //   navigate('/');
+  // };
+
+  // const onNameChange = (e) => {
+  //   setDogName(e.target.value);
+  // };
+
+  // const onBreedChange = (e) => {
+  //   setBreed(e.target.value);
+  // };
+
+  // const onAgeChange = (e) => {
+  //   setAge(e.target.value);
+  // };
+
+  // const onGoalsChange = (e) => {
+  //   setGoals(e.target.value);
+  // };
+
   return (
     <FormContainer>
       <Form>

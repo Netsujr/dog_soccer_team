@@ -3,28 +3,29 @@ export default (state, action) => {
   switch (action.type) {
     case 'ADD_DOG':
       return {
+        ...state,
         dogs: [action.payload, ...state.dogs]
       };
       //-----------------------------------------------------
     case 'DELETE_DOG':
       return {
+        ...state,
         dogs: state.dogs.filter(dog => {
           return dog.id !== action.payload })
       };
       // --------------------------------------------------
     case 'EDIT_DOG':
+      const updateDog = action.payload;
+      const updatedDogs = state.dogs.map(dog => {
+        if (dog.id === updateDog.id) {
+          return updateDog;
+        } else {
+          return dog;
+        }
+      });
       return {
         ...state,
-        dogs: state.dogs.map(dog => {
-          if (dog.id === action.id) {
-            return {
-              ...dog,
-              ...action.updates
-            };
-          } else {
-            return dog;
-          }
-        })
+        dogs: updatedDogs
       };
     default:
       return state;

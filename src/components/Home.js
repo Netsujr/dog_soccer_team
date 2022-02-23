@@ -8,12 +8,7 @@ const Home = (dogs, deleteDog, addDog, editDog) => {
     <>
       <Heading />
       <HomeContainer>
-          <DogList
-            dogs={dogs}
-            deleteDog={deleteDog}
-            addDog={addDog}
-            editDog={editDog}
-          />
+          <DogList />
       </HomeContainer>
     </>
   );
