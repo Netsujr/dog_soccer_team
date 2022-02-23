@@ -8,13 +8,7 @@ const Home = () => {
     <>
       <Heading />
       <HomeContainer>
-        <Captain>
           <DogList />
-        </Captain>
-        <DogList />
-        <DogList />
-        <DogList />
-        <DogList />
       </HomeContainer>
     </>
   );
@@ -27,15 +21,7 @@ const HomeContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  height: 100vh;
-  max-width: 80vw;
+  min-height: 60vh;
+  max-width: 75vw;
   border: 1px solid green;
-  `;
-
-const Captain = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid red;
   `;

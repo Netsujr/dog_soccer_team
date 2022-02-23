@@ -1,29 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { GlobalContext } from '../context/GlobalState';
 
 const DogList = () => {
+  const { dogs, deleteDog, editDog, addDog, addDogToTeam } = useContext(GlobalContext);
+
+  console.log(dogs);
+
+
   return (
-    <ListGroup>
-      <ListContainer>
-        <ListGroupItem className='listGroup'>
-          <DogImage>
-            <p>Image</p>
-          </DogImage>
-          <DogDetails>
-            <p>Name:</p>
-            <p>Breed:</p>
-            <p>Age:</p>
-            <p>Goals:</p>
-          </DogDetails>
-          <ButtonsContainer>
-            <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to='/edit/:id'><FaEdit/></Link>
-            <Button style={{ marginTop: '5px', padding: '0.2rem'  }}><FaTrashAlt/></Button>
-          </ButtonsContainer>
-        </ListGroupItem>
-      </ListContainer>
+    <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
+      {dogs.map(dog => (
+        <ListContainer>
+          <ListGroupItem className='listGroup'>
+            <DogImage>
+              <img src={dog.image} alt={dog.name} />
+            </DogImage>
+            <DogDetails>
+              <p>Name: {dog.name}</p>
+              <p>Breed: {dog.breed}</p>
+              <p>Age: {dog.age}</p>
+              <p>Goals: {dog.goals}</p>
+            </DogDetails>
+            <ButtonsContainer>
+              <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to='/edit/:id'><FaEdit /></Link>
+              <Button style={{ marginTop: '5px', padding: '0.2rem' }}><FaTrashAlt /></Button>
+            </ButtonsContainer>
+          </ListGroupItem>
+        </ListContainer>
+      ))}
     </ListGroup>
 
   );
@@ -32,53 +40,59 @@ const DogList = () => {
 export default DogList;
 
 const ListContainer = styled.div`
-  display: flex;
-  align-items: space-between;
-  justify-content: center;
-  max-width: 30rem;
-  background-color: #f5f5f5;
-  margin: 2rem;
-  border: 1px solid blue;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-
-  .listGroup {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 20rem;
-    max-height: 100px;
-    padding: 0.2rem;
-  }
-  `;
+    align-items: space-between;
+    justify-content: center;
+    max-width: 30rem;
+    background-color: #f5f5f5;
+    margin: 10px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+    .listGroup {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 20rem;
+      max-height: 100px;
+      padding: 0.2rem;
+    }
+    `;
 
 const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid yellow;
-  `;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid yellow;
+    `;
 
 const DogImage = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 100px;
-  border: 1px solid pink;
-  `;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100px;
+    max-width: 100px;
+    border: 1px solid pink;
+
+    img {
+      max-height: 100px;
+      max-width: 100px;
+      object-fit: cover;
+    }
+    `;
 
 const DogDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  height: 100px;
-  width: 55%;
-  border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    height: 100px;
+    width: 55%;
+    border: 1px solid red;
 
-  p {
-    margin: 4px 5px;
-  }
-  `;
+    p {
+      margin: 4px 5px;
+    }
+    `;
