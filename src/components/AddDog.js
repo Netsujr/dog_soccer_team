@@ -47,10 +47,10 @@ const handleSubmit = (e) => {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="name">Add a Dog to Team</Label>
-          <Input type="text" name='name' value={name} onChange={onNameChange} placeholder="Name" />
-          <Input type="text" breed='breed' value={breed} onChange={onBreedChange} placeholder="Breed" />
-          <Input type='number' age='age' value={age} onChange={onAgeChange} placeholder="Age" />
-          <Input type="number" goals='goals' value={goals} onChange={onGoalsChange} placeholder="Goals" />
+          <Input type="text" value={name} onChange={onNameChange} placeholder="Name" />
+          <Input type="text" value={breed} onChange={onBreedChange} placeholder="Breed" />
+          <Input type='number' value={age} onChange={onAgeChange} placeholder="Age" />
+          <Input type="number" value={goals} onChange={onGoalsChange} placeholder="Goals" />
         </FormGroup>
         <ButtonsContainer>
           <Button>Submit</Button>

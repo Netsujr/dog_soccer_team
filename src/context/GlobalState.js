@@ -34,10 +34,10 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 //-----------------------------------------------------
-  const editDog = (dog) => {
+  const editDog = (id, dog) => {
     dispatch({
       type: "EDIT_DOG",
-      payload: dog
+      payload: {id, dog}
     });
   }
 

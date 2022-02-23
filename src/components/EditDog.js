@@ -1,54 +1,58 @@
-import React, {useState} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalState';
-import { v4 as uuid } from 'uuid';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const EditDog = () => {
-  // const { addDog } = useContext(GlobalContext);
-  // const [dogName, setDogName] = useState('');
-  // const [breed, setBreed] = useState('');
-  // const [age, setAge] = useState('');
-  // const [goals, setGoals] = useState('');
-  // const navigate = useNavigate();
+  const { editDog, dogs } = useContext(GlobalContext);
+  const { id } = useParams();
+  const [selectedDog, setSelectedDog] = useState({
+    id: id,
+    name: '',
+    breed: '',
+    age: '',
+    goals: '',
+  });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const dog = dogs.find(dog => dog.id === id);
+    setSelectedDog(dog);
+  }, [dogs, id]);
 
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const newDog = {
-  //     id: uuid(),
-  //     name: e.target.name.value,
-  //     breed: e.target.breed.value,
-  //     age: e.target.age.value,
-  //     goals: e.target.goals.value,
-  //   };
-  //   addDog(newDog);
-  //   navigate('/');
-  // };
+  const onNameChange = (e) => {
+    setSelectedDog({ ...selectedDog, name: e.target.value });
+  };
 
-  // const onNameChange = (e) => {
-  //   setDogName(e.target.value);
-  // };
+  const onBreedChange = (e) => {
+    setSelectedDog({ ...selectedDog, breed: e.target.value });
+  };
 
-  // const onBreedChange = (e) => {
-  //   setBreed(e.target.value);
-  // };
+  const onAgeChange = (e) => {
+    setSelectedDog({ ...selectedDog, age: e.target.value });
+  };
 
-  // const onAgeChange = (e) => {
-  //   setAge(e.target.value);
-  // };
+  const onGoalsChange = (e) => {
+    setSelectedDog({ ...selectedDog, goals: e.target.value });
+  };
 
-  // const onGoalsChange = (e) => {
-  //   setGoals(e.target.value);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    editDog(selectedDog);
+    navigate('/');
+  };
 
   return (
     <FormContainer>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="name">Edit Dog</Label>
-          <Input type="text" name="name" id="name" placeholder="Name" />
+          <Input type="text" value={selectedDog.name} onChange={onNameChange} placeholder="Name" />
+          <Input type="text" value={selectedDog.breed} onChange={onBreedChange} placeholder="Breed" />
+          <Input type="number" value={selectedDog.age} onChange={onAgeChange} placeholder="Age" />
+          <Input type="number" value={selectedDog.goals} onChange={onGoalsChange} placeholder="Goals" />
         </FormGroup>
         <ButtonsContainer>
           <Button>Submit</Button>
