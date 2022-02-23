@@ -8,7 +8,7 @@ const EditDog = () => {
   const { editDog, dogs } = useContext(GlobalContext);
   const { id } = useParams();
   const [selectedDog, setSelectedDog] = useState({
-    id: id,
+    id: '',
     name: '',
     breed: '',
     age: '',
@@ -23,7 +23,7 @@ const EditDog = () => {
 
 
   const onNameChange = (e) => {
-    setSelectedDog({ ...selectedDog, name: e.target.value });
+    setSelectedDog({ ...selectedDog, [e.target.name]: e.target.value });
   };
 
   const onBreedChange = (e) => {
@@ -31,7 +31,7 @@ const EditDog = () => {
   };
 
   const onAgeChange = (e) => {
-    setSelectedDog({ ...selectedDog, age: e.target.value });
+    setSelectedDog({ ...selectedDog, [e.age.target]: e.target.value });
   };
 
   const onGoalsChange = (e) => {
@@ -49,7 +49,12 @@ const EditDog = () => {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="name">Edit Dog</Label>
-          <Input type="text" value={selectedDog.name} onChange={onNameChange} placeholder="Name" />
+          <Input
+          type="text"
+          value={selectedDog.name}
+          onChange={onNameChange}
+          placeholder="Name"
+          />
           <Input type="text" value={selectedDog.breed} onChange={onBreedChange} placeholder="Breed" />
           <Input type="number" value={selectedDog.age} onChange={onAgeChange} placeholder="Age" />
           <Input type="number" value={selectedDog.goals} onChange={onGoalsChange} placeholder="Goals" />

@@ -6,7 +6,8 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
 
 const DogList = () => {
-  const { dogs, deleteDog, editDog, addDog, addDogToTeam } = useContext(GlobalContext);
+  const { dogs, deleteDog } = useContext(GlobalContext);
+ console.log(dogs);
 
 
   return (

@@ -6,28 +6,44 @@ export default (state, action) => {
         ...state,
         dogs: [action.payload, ...state.dogs]
       };
-      //-----------------------------------------------------
+    //-----------------------------------------------------
     case 'DELETE_DOG':
       return {
         ...state,
         dogs: state.dogs.filter(dog => {
-          return dog.id !== action.payload })
+          return dog.id !== action.payload;
+        })
       };
-      // --------------------------------------------------
+    // --------------------------------------------------
+    // create edit case
     case 'EDIT_DOG':
-      const updateDog = action.payload;
-      const updatedDogs = state.dogs.map(dog => {
-        if (dog.id === updateDog.id) {
-          return updateDog;
-        } else {
-          return dog;
-        }
-      });
       return {
         ...state,
-        dogs: updatedDogs
+        dogs: state.dogs.map(dog => {
+          if (dog.id === action.payload.id) {
+            return {
+              ...dog,
+              ...action.payload.dog
+            };
+          } else {
+            return dog;
+          }
+        })
       };
     default:
       return state;
   }
 };
+
+      // const updateDog = action.payload;
+      // const updatedDogs = state.dogs.map(dog => {
+      //   if (dog.id === updateDog.id) {
+      //     return updateDog;
+      //   }
+      // });
+      // return {
+      //   ...state,
+      //   dogs: updatedDogs
+      // };
+      //     default:
+      // return state;
