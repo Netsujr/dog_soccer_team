@@ -6,8 +6,14 @@ import styled from 'styled-components';
 const Home = () => {
   return (
     <>
+      <Heading />
       <HomeContainer>
-        <Heading />
+        <Captain>
+          <DogList />
+        </Captain>
+        <DogList />
+        <DogList />
+        <DogList />
         <DogList />
       </HomeContainer>
     </>
@@ -18,10 +24,18 @@ export default Home;
 
 const HomeContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   height: 100vh;
-  width: 80vw;
-  border: 1px solid pink;
+  max-width: 80vw;
+  border: 1px solid green;
+  `;
+
+const Captain = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
   `;

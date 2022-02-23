@@ -5,20 +5,23 @@ import AddDog from './components/AddDog';
 import EditDog from './components/EditDog';
 import Header from './components/Header';
 import styled from 'styled-components';
+import { GlobalProvider } from './context/GlobalState';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <AppContainer>
-      <Router>
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/add" element={<AddDog />} />
-          <Route exact path="/edit/:id" element={<EditDog />} />
-        </Routes>
-      </Router>
-    </AppContainer>
+    <GlobalProvider>
+      <AppContainer>
+        <Router>
+          <Header />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/add" element={<AddDog />} />
+            <Route exact path="/edit/:id" element={<EditDog />} />
+          </Routes>
+        </Router>
+      </AppContainer>
+    </GlobalProvider>
   );
 }
 
