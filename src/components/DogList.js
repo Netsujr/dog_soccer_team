@@ -14,16 +14,16 @@ const DogList = () => {
   return (
     <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
       {dogs.map(dog => (
-        <ListContainer>
+        <ListContainer key={dog.id}>
           <ListGroupItem className='listGroup'>
             <DogImage>
-              <img src={dog.image} alt={dog.name} />
+              <img src={dog.image ? dog.image : 'No Image'} alt={dog.name} />
             </DogImage>
             <DogDetails>
-              <p>Name: {dog.name}</p>
-              <p>Breed: {dog.breed}</p>
-              <p>Age: {dog.age}</p>
-              <p>Goals: {dog.goals}</p>
+              <p>Name: {dog.name ? dog.name : 'No name'}</p>
+              <p>Breed: {dog.breed ? dog.breed : 'No breed'}</p>
+              <p>Age: {dog.age ? dog.age : 'No Age'}</p>
+              <p>Goals: {dog.goals ? dog.goals : 'No Goals'}</p>
             </DogDetails>
             <ButtonsContainer>
               <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to={`/edit/${dog.id}`}><FaEdit /></Link>

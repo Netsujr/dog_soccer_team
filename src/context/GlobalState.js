@@ -26,14 +26,14 @@ export const GlobalProvider = ({ children }) => {
       payload: dog
     });
   }
-
+//-----------------------------------------------------
   const deleteDog = (id) => {
     dispatch({
       type: "DELETE_DOG",
       payload: id
     });
   }
-
+//-----------------------------------------------------
   const editDog = (id, dog) => {
     dispatch({
       type: "EDIT_DOG",

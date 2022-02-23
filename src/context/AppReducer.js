@@ -3,15 +3,15 @@ export default (state, action) => {
   switch (action.type) {
     case 'ADD_DOG':
       return {
-        ...state,
-        dogs: [...state.dogs, action.dog]
+        dogs: [action.payload, ...state.dogs]
       };
+      //-----------------------------------------------------
     case 'DELETE_DOG':
       return {
-        ...state,
         dogs: state.dogs.filter(dog => {
           return dog.id !== action.payload })
       };
+      // --------------------------------------------------
     case 'EDIT_DOG':
       return {
         ...state,

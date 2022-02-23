@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalState';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const AddDog = () => {
+  const { addDog } = useContext(GlobalContext);
+  const navigate = useNavigate();
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const newDog = {
+    id: 10,
+    name: 'renato',
+  };
+  addDog(newDog);
+  navigate('/');
+  };
+
   return (
     <FormContainer>
-      <Form>
+      <Form onSubmit={() => handleSubmit()}>
         <FormGroup>
           <Label for="name">Add a Dog to Team</Label>
           <Input type="text" name="name" id="name" placeholder="Name" />
