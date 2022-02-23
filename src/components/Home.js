@@ -1,9 +1,12 @@
 import React from 'react';
+import DogList from './DogList';
+import Heading from './Heading';
 
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Heading />
+      <DogList/>
     </div>
   );
 };

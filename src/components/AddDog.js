@@ -14,7 +14,6 @@ const AddDog = () => {
         <ButtonsContainer>
           <Button>Submit</Button>
           <Link to='/' className='btn btn-danger'>Home</Link>
-
         </ButtonsContainer>
       </Form>
     </FormContainer>
