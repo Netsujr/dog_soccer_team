@@ -7,11 +7,11 @@ const Heading = () => {
   return (
     <NavbarContainer>
       <Navbar color="dark" dark>
-        <Container className='d-flex'>
+        <Container className='headingContainer'>
           <NavbarBrand href="/">Doggy Team</NavbarBrand>
           <Nav>
             <NavItem>
-              <Link to='/add' className='btn btn-primary'>Add Dog</Link>
+              <Link className='btn btn-primary' to='/add'>Add Dog</Link>
             </NavItem>
           </Nav>
         </Container>
@@ -24,6 +24,15 @@ export default Heading;
 
 const NavbarContainer = styled.div`
   background-color: #f5f5f5;
-  margin-bottom: 2rem;
+  margin: 2rem;
   display: flex;
+  min-width: 30rem;
+  border: 1px solid #e5e5e5;
+
+  .headingContainer {
+    display: flex;
+    min-width: 40rem;
+    justify-content: space-between;
+  }
+
   `;
