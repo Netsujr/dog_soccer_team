@@ -24,7 +24,7 @@ export default Heading;
 
 const NavbarContainer = styled.div`
   background-color: #f5f5f5;
-  margin: 2rem;
+  margin-top: 2rem;
   display: flex;
   min-width: 30rem;
   border: 1px solid #e5e5e5;
