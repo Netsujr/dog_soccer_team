@@ -20,21 +20,21 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  function addDog(dog) {
+  const addDog= (dog) => {
     dispatch({
       type: "ADD_DOG",
       payload: dog
     });
   }
 
-  function deleteDog(id) {
+  const deleteDog = (id) => {
     dispatch({
       type: "DELETE_DOG",
       payload: id
     });
   }
 
-  function editDog(id, dog) {
+  const editDog = (id, dog) => {
     dispatch({
       type: "EDIT_DOG",
       payload: { id, dog }
@@ -48,8 +48,7 @@ export const GlobalProvider = ({ children }) => {
         addDog,
         deleteDog,
         editDog
-      }}
-    >
+      }}>
       {children}
     </GlobalContext.Provider>
   );

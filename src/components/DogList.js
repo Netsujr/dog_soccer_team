@@ -26,14 +26,13 @@ const DogList = () => {
               <p>Goals: {dog.goals}</p>
             </DogDetails>
             <ButtonsContainer>
-              <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to='/edit/:id'><FaEdit /></Link>
-              <Button style={{ marginTop: '5px', padding: '0.2rem' }}><FaTrashAlt /></Button>
+              <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to={`/edit/${dog.id}`}><FaEdit /></Link>
+              <Button style={{ marginTop: '5px', padding: '0.2rem' }} onClick={() => deleteDog(dog.id)} ><FaTrashAlt /></Button>
             </ButtonsContainer>
           </ListGroupItem>
         </ListContainer>
       ))}
     </ListGroup>
-
   );
 };
 

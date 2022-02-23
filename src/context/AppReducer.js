@@ -9,7 +9,8 @@ export default (state, action) => {
     case 'DELETE_DOG':
       return {
         ...state,
-        dogs: state.dogs.filter(dog => dog.id !== action.id)
+        dogs: state.dogs.filter(dog => {
+          return dog.id !== action.payload })
       };
     case 'EDIT_DOG':
       return {
@@ -28,4 +29,4 @@ export default (state, action) => {
     default:
       return state;
   }
-}
+};

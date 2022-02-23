@@ -3,12 +3,17 @@ import DogList from './DogList';
 import Heading from './Heading';
 import styled from 'styled-components';
 
-const Home = () => {
+const Home = (dogs, deleteDog, addDog, editDog) => {
   return (
     <>
       <Heading />
       <HomeContainer>
-          <DogList />
+          <DogList
+            dogs={dogs}
+            deleteDog={deleteDog}
+            addDog={addDog}
+            editDog={editDog}
+          />
       </HomeContainer>
     </>
   );
