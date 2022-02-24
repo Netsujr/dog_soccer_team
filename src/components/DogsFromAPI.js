@@ -22,6 +22,13 @@ const DogsFromAPI = () => {
     });
   }, []);
 
+  const handleClickToShowDog = (e) => {
+    const breed = e.target.id;
+    getRandomImage(breed).then(data => {
+      setRandomImage(data);
+    });
+  };
+
   const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
   const randomDogAge = Math.floor(Math.random() * 20) + 1;
   const randomGoals = Math.floor(Math.random() * 10) + 1;
@@ -45,79 +52,78 @@ const DogsFromAPI = () => {
           <h5>Goals: </h5>
           <p>{randomGoals}</p>
         </GoalsContainer>
-        <Link to='/'><FaInfo className='displayDog' /></Link>
       </div>
-    </DogsContainer>
+    </DogsContainer >
   );
 };
 
 export default DogsFromAPI;
 
 const DogsContainer = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  min-width: 20vw;
-  padding: 5px;
-  border: 1px solid black;
-  margin: 3px;
-  position: relative;
-
-  .displayDog {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    border: 1px solid black;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-width: 20vw;
     padding: 5px;
-    color: black;
-  }
+    border: 1px solid black;
+    margin: 3px;
+    position: relative;
 
-  .dog {
+    .displayDog {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      border: 1px solid black;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      padding: 5px;
+      color: black;
+    }
+
+    .dog {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+    }
+
+    p {
+      margin-left: 10px;
+      margin-bottom: 6px;
+      font-size: 16px;
+
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    `;
+
+const BreedContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-  }
-
-  p {
-    margin-left: 10px;
-    margin-bottom: 6px;
-    font-size: 16px;
-
-  }
-
-  img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 15px;
-  }
-  `;
-
-const BreedContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  `
+    `
 
 const AgeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    `
 
 const GoalsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    `
