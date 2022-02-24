@@ -15,35 +15,19 @@ export default (state, action) => {
         })
       };
     // --------------------------------------------------
-    // create edit case
-    case 'EDIT_DOG':
+    case "EDIT_DOG":
+      const updatedDog = action.payload;
+      const updatedDogs = state.dogs.map((dog) => {
+        if (dog.id === updatedDog.id) {
+          return updatedDog;
+        }
+        return dog;
+      });
       return {
         ...state,
-        dogs: state.dogs.map(dog => {
-          if (dog.id === action.payload.id) {
-            return {
-              ...dog,
-              ...action.payload.dog
-            };
-          } else {
-            return dog;
-          }
-        })
+        dogs: updatedDogs,
       };
     default:
       return state;
   }
 };
-
-      // const updateDog = action.payload;
-      // const updatedDogs = state.dogs.map(dog => {
-      //   if (dog.id === updateDog.id) {
-      //     return updateDog;
-      //   }
-      // });
-      // return {
-      //   ...state,
-      //   dogs: updatedDogs
-      // };
-      //     default:
-      // return state;

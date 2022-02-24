@@ -33,6 +33,10 @@ const EditDog = ({}) => {
     });
   };
 
+  const handleNameChange = (e) => {
+    setSelectedDog({...selectedDog, [e.target.name]: e.target.value});
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     editDog(selectedDog);
@@ -49,8 +53,9 @@ const EditDog = ({}) => {
           <Input
             type="text"
             value={selectedDog?.name ? selectedDog.name : ''}
-            onChange={(e) => handleChange('name', e.target.value)}
+            onChange={handleNameChange}
             placeholder="Name"
+            name='name'
           />
 
 
@@ -59,6 +64,7 @@ const EditDog = ({}) => {
             value={selectedDog?.breed ? selectedDog.breed : ''}
             onChange={(e) => handleChange('breed', e.target.value)}
             placeholder="Breed"
+            name='breed'
           />
 
           <Input
@@ -66,6 +72,7 @@ const EditDog = ({}) => {
             value={selectedDog?.age ? selectedDog.age : ''}
             onChange={(e) => handleChange('age', e.target.value)}
             placeholder="Age"
+            name='age'
           />
 
           <Input
@@ -73,6 +80,7 @@ const EditDog = ({}) => {
             value={selectedDog?.goals ? selectedDog.goals : ''}
             onChange={(e) => handleChange('goals', e.target.value)}
             placeholder="Goals"
+            name='goals'
           />
 
         </FormGroup>
