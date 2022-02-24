@@ -54,10 +54,11 @@ const DogsContainer = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  min-width: 25vw;
+  min-width: 20vw;
   padding: 5px;
   border: 1px solid black;
   margin: 3px;
+  z-index: 1;
 
   .dog {
     display: flex;

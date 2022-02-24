@@ -7,8 +7,7 @@ import { GlobalContext } from '../context/GlobalState';
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
- console.log(dogs);
-
+//  console.log(dogs);
 
   return (
     <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>

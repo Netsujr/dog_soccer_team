@@ -9,7 +9,12 @@ const Home = (dogs, deleteDog, addDog, editDog) => {
     <>
       <Heading />
       <HomeContainer>
-        <ListContainer>
+        <ListContainer className='overflow-auto'>
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
           <DogsFromAPI />
           <DogsFromAPI />
           <DogsFromAPI />
@@ -40,10 +45,11 @@ const ListContainer = styled.div`
   max-width: 25vw;
   /* border: 1px solid green; */
   flex-direction: column;
+  max-height: 60vh;
   `;
 
 const TeamContainer = styled.div`
   display: flex;
   max-width: 70vw;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   `;
