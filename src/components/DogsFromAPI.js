@@ -55,7 +55,7 @@ const DogsContainer = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  min-width: 20vw;
+  width: 30vw;
   padding: 5px;
   margin: 3px;
   position: relative;

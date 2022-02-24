@@ -1,38 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DogList from './DogList';
 import Heading from './Heading';
 import DogsFromAPI from './DogsFromAPI';
 import styled from 'styled-components';
 import { Tabs, Tab, Appbar } from '@material-ui/core';
+import { getBreedsData, getRandomImage } from '../api';
 
 const Home = () => {
-const [selectedTab , setSelectedTab] = useState(0);
-const handleChange = (event, newSelectedTab) => {
-  setSelectedTab(newSelectedTab);
-};
+  const [selectedTab, setSelectedTab] = useState(0);
+  const handleChange = (event, newSelectedTab) => {
+    setSelectedTab(newSelectedTab);
+  };
+
+  const [breeds, setBreeds] = useState([]);
+  const [randomImage, setRandomImage] = useState('');
+
+  useEffect(() => {
+    getRandomImage(breeds[0]).then(data => {
+      setRandomImage(data);
+    });
+  }, [breeds]);
+
+  useEffect(() => {
+    getBreedsData().then(data => {
+      setBreeds(Object.keys(data));
+    });
+  }, []);
+
 
   return (
     <>
-      <Heading />
+      <Heading
+        onClick={() => setSelectedTab(0)}
+        />
+        <HomeContainer>
       <Tabs value={selectedTab} onChange={handleChange}>
-        <Tab label="Dogs from API" />
-        <Tab label="Dog from API" />
+        <Tab label="Your Team" />
+        <Tab label="Top Dogs of the Week" />
+        <Tab label="Top Dog" />
       </Tabs>
-
-      <HomeContainer>
-        <ListContainer className='overflow-auto'>
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-        </ListContainer>
+      {selectedTab === 0 &&
         <TeamContainer>
           <DogList />
-        </TeamContainer>
+        </TeamContainer>}
+      {selectedTab === 1 &&
+        <ListContainer>
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
+        </ListContainer>}
+      {selectedTab === 2 && <DogsFromAPI />}
       </HomeContainer>
     </>
   );
@@ -42,26 +62,23 @@ export default Home;
 
 const HomeContainer = styled.div`
   display: flex;
-  /* flex-direction: column; */
-  align-items: start;
-  flex-wrap: wrap;
   justify-content: center;
-  min-height: 60vh;
-  max-width: 100vw;
-  /* border: 4px solid green; */
-  `;
+  flex-direction: column;
+  align-items: center;
+      border: 4px solid green;
+      `;
 
 const ListContainer = styled.div`
-  display: flex;
-  max-width: 25vw;
-  /* border: 1px solid green; */
-  flex-direction: column;
-  max-height: 65vh;
-  `;
+      display: flex;
+      justify-content: space-around;
+      max-width: 65vw;
+      /* border: 1px solid green; */
+      flex-wrap: wrap;
+      `;
 
 const TeamContainer = styled.div`
-  display: flex;
-  max-width: 70vw;
-  min-width: 70vw;
-  /* border: 1px solid blue; */
-  `;
+      display: flex;
+      max-width: 70vw;
+      min-width: 70vw;
+      /* border: 1px solid blue; */
+      `;

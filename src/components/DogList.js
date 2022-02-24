@@ -19,10 +19,10 @@ const DogList = () => {
   return (
     <Container>
       <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <Special>
+        {/* <Special>
           <DogsFromAPI />
           <button onClick={newDogStats} >Get Fresh Stats</button>
-        </Special>
+        </Special> */}
         {(dogs.map(dog => (
           <ListContainer key={dog.id}>
             <ListGroupItem className='listGroup'>
