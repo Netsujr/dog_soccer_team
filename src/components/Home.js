@@ -1,6 +1,7 @@
 import React from 'react';
 import DogList from './DogList';
 import Heading from './Heading';
+import DogsFromAPI from './DogsFromAPI';
 import styled from 'styled-components';
 
 const Home = (dogs, deleteDog, addDog, editDog) => {
@@ -9,6 +10,7 @@ const Home = (dogs, deleteDog, addDog, editDog) => {
       <Heading />
       <HomeContainer>
           <DogList />
+          <DogsFromAPI />
       </HomeContainer>
     </>
   );
