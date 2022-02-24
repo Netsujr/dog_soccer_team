@@ -17,8 +17,10 @@ export default (state, action) => {
     // --------------------------------------------------
     case "EDIT_DOG":
       const updatedDog = action.payload;
+      console.log(updatedDog);
       const updatedDogs = state.dogs.map((dog) => {
         if (dog.id === updatedDog.id) {
+          console.log(updatedDog);
           return updatedDog;
         }
         return dog;
