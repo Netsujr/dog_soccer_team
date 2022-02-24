@@ -20,21 +20,16 @@ const EditDog = ({}) => {
 
   console.log(selectedDog?.name ? selectedDog.name : '');
 
-
   useEffect(() => {
     const dogID = currentDogId;
     setSelectedDog(dogID);
   }, [currentDogId, dogs]);
 
-  const handleChange = (userKey, newValue) => {
+  const handleChange = (dogKey, newValue) => {
     setSelectedDog({
       ...selectedDog,
-      [userKey]: newValue,
+      [dogKey]: newValue,
     });
-  };
-
-  const handleNameChange = (e) => {
-    setSelectedDog({...selectedDog, [e.target.name]: e.target.value});
   };
 
   const handleSubmit = (e) => {
@@ -53,7 +48,7 @@ const EditDog = ({}) => {
           <Input
             type="text"
             value={selectedDog?.name ? selectedDog.name : ''}
-            onChange={handleNameChange}
+            onChange={(e) => handleChange('name', e.target.value)}
             placeholder="Name"
             name='name'
           />
