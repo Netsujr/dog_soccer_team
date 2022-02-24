@@ -22,7 +22,8 @@ const EditDog = ({}) => {
 
   useEffect(() => {
     const dogID = currentDogId;
-    setSelectedDog(dogID);
+    const selectedDog = dogs.find(dog => dog.id === parseInt(dogID));
+    setSelectedDog(selectedDog);
   }, [currentDogId, dogs]);
 
   const handleChange = (dogKey, newValue) => {
