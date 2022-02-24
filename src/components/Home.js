@@ -27,32 +27,35 @@ const Home = () => {
     });
   }, []);
 
+  const breedsList = breeds.map(breed => breed.toUpperCase());
+
+  console.log(breedsList);
 
   return (
     <>
       <Heading
         onClick={() => setSelectedTab(0)}
-        />
-        <HomeContainer>
-      <Tabs value={selectedTab} onChange={handleChange}>
-        <Tab label="Your Team" />
-        <Tab label="Top Dogs of the Week" />
-        <Tab label="Top Dog" />
-      </Tabs>
-      {selectedTab === 0 &&
-        <TeamContainer>
-          <DogList />
-        </TeamContainer>}
-      {selectedTab === 1 &&
-        <ListContainer>
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
-        </ListContainer>}
-      {selectedTab === 2 && <DogsFromAPI />}
+      />
+      <HomeContainer>
+        <Tabs value={selectedTab} onChange={handleChange}>
+          <Tab label="Your Team" />
+          <Tab label="Top Dogs of the Week" />
+          <Tab label="Top Dog" />
+        </Tabs>
+        {selectedTab === 0 &&
+          <TeamContainer>
+            <DogList />
+          </TeamContainer>}
+        {selectedTab === 1 &&
+          <ListContainer>
+            {breedsList.map((breed, index) => {
+              if (index >= 79)
+                return (
+                  <DogsFromAPI breed={breed} />
+                );
+            })}
+          </ListContainer>}
+        {selectedTab === 2 && <DogsFromAPI />}
       </HomeContainer>
     </>
   );
@@ -61,24 +64,24 @@ const Home = () => {
 export default Home;
 
 const HomeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-      border: 4px solid green;
-      `;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        border: 4px solid green;
+        `;
 
 const ListContainer = styled.div`
-      display: flex;
-      justify-content: space-around;
-      max-width: 65vw;
-      /* border: 1px solid green; */
-      flex-wrap: wrap;
-      `;
+        display: flex;
+        justify-content: space-around;
+        max-width: 65vw;
+        /* border: 1px solid green; */
+        flex-wrap: wrap;
+        `;
 
 const TeamContainer = styled.div`
-      display: flex;
-      max-width: 70vw;
-      min-width: 70vw;
-      /* border: 1px solid blue; */
-      `;
+        display: flex;
+        max-width: 70vw;
+        min-width: 70vw;
+        /* border: 1px solid blue; */
+        `;
