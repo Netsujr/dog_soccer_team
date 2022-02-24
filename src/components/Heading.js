@@ -11,7 +11,7 @@ const Heading = () => {
           <NavbarBrand href="/">Doggy Team</NavbarBrand>
           <Nav>
             <NavItem>
-              <Link className='btn btn-primary' to='/add'>Add Dog</Link>
+              <Link className='btn btn-primary' to='/add'>Add Your Dog</Link>
             </NavItem>
           </Nav>
         </Container>

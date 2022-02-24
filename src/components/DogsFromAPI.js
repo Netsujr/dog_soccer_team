@@ -26,11 +26,24 @@ const DogsFromAPI = () => {
 
   return (
     <DogsContainer>
-      <h1>{dogNames.allRandom()}</h1>
-      <img src={randomImage} alt="" />
-      <h2>{randomBreed}</h2>
-      <p>{randomDogAge}</p>
-      <p>{randomGoals}</p>
+      <div className='dog'>
+        <img src={randomImage} alt="" />
+        <h5>{dogNames.allRandom()}</h5>
+      </div>
+      <div className='info'>
+        <BreedContainer>
+          <h5>Breed: </h5>
+          <p>{randomBreed}</p>
+        </BreedContainer>
+        <AgeContainer>
+          <h5>Age: </h5>
+          <p>{randomDogAge}</p>
+        </AgeContainer>
+        <GoalsContainer>
+          <h5>Goals: </h5>
+          <p>{randomGoals}</p>
+        </GoalsContainer>
+      </div>
     </DogsContainer>
   );
 };
@@ -38,4 +51,57 @@ const DogsFromAPI = () => {
 export default DogsFromAPI;
 
 const DogsContainer = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  min-width: 25vw;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 3px;
+
+  .dog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+
+  p {
+    margin-left: 10px;
+    margin-bottom: 6px;
+    font-size: 16px;
+
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
   `;
+
+const BreedContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
+
+const AgeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
+
+const GoalsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
