@@ -8,8 +8,8 @@ const EditDog = () => {
   const { dogs, editDog } = useContext(GlobalContext);
   const navigate = useNavigate();
   let { id } = useParams();
-  console.log(useParams());
-  console.log(id);
+  // console.log(useParams());
+  // console.log(id);
   const currentDog = dogs.find(dog => dog.id === parseInt(id));
 
 
@@ -22,7 +22,7 @@ const EditDog = () => {
   });
 
   useEffect(() => {
-    console.log(currentDog);
+    // console.log(currentDog);
     setSelectedDog(currentDog);
   }, [currentDog, dogs]);
 
