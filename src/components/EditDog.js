@@ -4,12 +4,15 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalState';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const EditDog = ({}) => {
+const EditDog = () => {
   const { dogs, editDog } = useContext(GlobalContext);
   const navigate = useNavigate();
-  const { slug } = useParams();
-  let currentDogId = dogs.find(dog => dog.id === slug);
-  // let { id } = useParams();
+  let { id } = useParams();
+  console.log(useParams());
+  console.log(id);
+  const currentDog = dogs.find(dog => dog.id === parseInt(id));
+
+
   const [selectedDog, setSelectedDog] = useState({
     id: null,
     name: '',
@@ -18,13 +21,11 @@ const EditDog = ({}) => {
     goals: '',
   });
 
-  console.log(selectedDog?.name ? selectedDog.name : '');
-
   useEffect(() => {
-    const dogID = currentDogId;
-    const selectedDog = dogs.find(dog => dog.id === parseInt(dogID));
-    setSelectedDog(selectedDog);
-  }, [currentDogId, dogs]);
+    console.log(currentDog);
+    setSelectedDog(currentDog);
+  }, [currentDog, dogs]);
+
 
   const handleChange = (dogKey, newValue) => {
     setSelectedDog({
