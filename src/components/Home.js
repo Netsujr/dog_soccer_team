@@ -15,6 +15,9 @@ const Home = () => {
           <DogsFromAPI />
           <DogsFromAPI />
           <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
+          <DogsFromAPI />
         </ListContainer>
         <TeamContainer>
           <DogList />
@@ -29,7 +32,7 @@ export default Home;
 const HomeContainer = styled.div`
   display: flex;
   /* flex-direction: column; */
-  align-items: center;
+  align-items: start;
   flex-wrap: wrap;
   justify-content: center;
   min-height: 60vh;
@@ -42,7 +45,7 @@ const ListContainer = styled.div`
   max-width: 25vw;
   /* border: 1px solid green; */
   flex-direction: column;
-  max-height: 60vh;
+  max-height: 65vh;
   `;
 
 const TeamContainer = styled.div`

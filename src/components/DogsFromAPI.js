@@ -61,18 +61,7 @@ const DogsContainer = styled.div`
   position: relative;
   border: 1px solid black;
   border-radius: 5px;
-
-  .displayDog {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    padding: 5px;
-    color: black;
-    /* border: 1px solid black; */
-  }
+  background-color: #f5f5f5;
 
   .dog {
     display: flex;

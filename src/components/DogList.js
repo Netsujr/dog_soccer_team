@@ -1,66 +1,60 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
 import DogsFromAPI from './DogsFromAPI';
-import { getBreedsData, getRandomImage } from '../api';
+import field from '../images/footballField.png';
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
   const [dogRefresh, setDogRefresh] = useState(false);
-  const [breeds, setBreeds] = useState([]);
-  const [randomImage, setRandomImage] = useState('');
-
-  useEffect(() => {
-    getRandomImage(breeds[0]).then(data => {
-      setRandomImage(data);
-    });
-  }, [breeds]);
-
-  useEffect(() => {
-    getBreedsData().then(data => {
-      setBreeds(Object.keys(data));
-    });
-  }, []);
 
   const newDogStats = () => {
     setDogRefresh(!dogRefresh);
     console.log(dogRefresh);
   };
 
-
   return (
-    <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-      <Special>
-        <DogsFromAPI />
-        <button onClick={newDogStats} >Get Fresh Stats</button>
-      </Special>
-      {(dogs.map(dog => (
-        <ListContainer key={dog.id}>
-          <ListGroupItem className='listGroup'>
-            <DogImage>
-              <img src={dog.image ? dog.image : 'No image'} alt={dog.name} />
-            </DogImage>
-            <DogDetails>
-              <p>Name: {dog.name ? dog.name : <span>Add name</span>}</p>
-              <p>Breed: {dog.breed ? dog.breed : <span>Add breed</span>}</p>
-              <p>Age: {dog.age ? dog.age : <span>Add age</span>}</p>
-              <p>Goals: {dog.goals ? dog.goals : <span>Add goals</span>}</p>
-            </DogDetails>
-            <ButtonsContainer>
-              <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to={`/edit/${dog.id}`}><FaEdit /></Link>
-              <Button style={{ marginTop: '5px', padding: '0.2rem' }} onClick={() => deleteDog(dog.id)} ><FaTrashAlt /></Button>
-            </ButtonsContainer>
-          </ListGroupItem>
-        </ListContainer>
-      )))}
-    </ListGroup>
+    <Container>
+      <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <Special>
+          <DogsFromAPI />
+          <button onClick={newDogStats} >Get Fresh Stats</button>
+        </Special>
+        {(dogs.map(dog => (
+          <ListContainer key={dog.id}>
+            <ListGroupItem className='listGroup'>
+              <DogImage>
+                <img src={dog.image ? dog.image : 'No image'} alt={dog.name} />
+              </DogImage>
+              <DogDetails>
+                <p>Name: {dog.name ? dog.name : <span>Add name</span>}</p>
+                <p>Breed: {dog.breed ? dog.breed : <span>Add breed</span>}</p>
+                <p>Age: {dog.age ? dog.age : <span>Add age</span>}</p>
+                <p>Goals: {dog.goals ? dog.goals : <span>Add goals</span>}</p>
+              </DogDetails>
+              <ButtonsContainer>
+                <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to={`/edit/${dog.id}`}><FaEdit /></Link>
+                <Button style={{ marginTop: '5px', padding: '0.2rem' }} onClick={() => deleteDog(dog.id)} ><FaTrashAlt /></Button>
+              </ButtonsContainer>
+            </ListGroupItem>
+          </ListContainer>
+        )))}
+      </ListGroup>
+    </Container>
   );
 };
 
 export default DogList;
+
+const Container = styled.div`
+    background-image: url('${field}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    `;
 
 const ListContainer = styled.div`
     display: flex;
