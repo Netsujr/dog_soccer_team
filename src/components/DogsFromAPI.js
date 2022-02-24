@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { getBreedsData, getRandomImage } from '../api';
 import styled from 'styled-components';
 
+const dogNames = require('dog-names');
+
 const DogsFromAPI = () => {
-const [dogs, setDogs] = useState([]);
-const [breeds, setBreeds] = useState([]);
-const [randomImage, setRandomImage] = useState('');
+  const [breeds, setBreeds] = useState([]);
+  const [randomImage, setRandomImage] = useState('');
 
   useEffect(() => {
     getBreedsData().then(data => {
@@ -19,10 +20,17 @@ const [randomImage, setRandomImage] = useState('');
     });
   }, [breeds]);
 
+  const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
+  const randomDogAge = Math.floor(Math.random() * 20) + 1;
+  const randomGoals = Math.floor(Math.random() * 10) + 1;
+
   return (
     <DogsContainer>
-    <img src={randomImage} alt="" />
-    {/* <h2>{breeds}</h2> */}
+      <h1>{dogNames.allRandom()}</h1>
+      <img src={randomImage} alt="" />
+      <h2>{randomBreed}</h2>
+      <p>{randomDogAge}</p>
+      <p>{randomGoals}</p>
     </DogsContainer>
   );
 };
@@ -30,4 +38,4 @@ const [randomImage, setRandomImage] = useState('');
 export default DogsFromAPI;
 
 const DogsContainer = styled.div`
-`;
+  `;

@@ -9,8 +9,12 @@ const Home = (dogs, deleteDog, addDog, editDog) => {
     <>
       <Heading />
       <HomeContainer>
-          <DogList />
+        <ListContainer>
           <DogsFromAPI />
+        </ListContainer>
+        <TeamContainer>
+          <DogList />
+        </TeamContainer>
       </HomeContainer>
     </>
   );
@@ -20,10 +24,23 @@ export default Home;
 
 const HomeContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
   min-height: 60vh;
-  max-width: 75vw;
+  max-width: 100vw;
   border: 1px solid green;
+  `;
+
+const ListContainer = styled.div`
+  display: flex;
+  max-width: 25vw;
+  border: 1px solid green;
+  `;
+
+const TeamContainer = styled.div`
+  display: flex;
+  max-width: 75vw;
+  border: 1px solid blue;
   `;
