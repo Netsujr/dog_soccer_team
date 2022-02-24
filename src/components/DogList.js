@@ -1,21 +1,42 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
 import DogsFromAPI from './DogsFromAPI';
+import { getBreedsData, getRandomImage } from '../api';
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
-  const [dogRefresh , setDogRefresh] = useState(false);
+  const [dogRefresh, setDogRefresh] = useState(false);
+  const [breeds, setBreeds] = useState([]);
+  const [randomImage, setRandomImage] = useState('');
+
+  useEffect(() => {
+    getRandomImage(breeds[0]).then(data => {
+      setRandomImage(data);
+    });
+  }, [breeds]);
+
+  useEffect(() => {
+    getBreedsData().then(data => {
+      setBreeds(Object.keys(data));
+    });
+  }, []);
 
   const newDogStats = () => {
     setDogRefresh(!dogRefresh);
+    console.log(dogRefresh);
   };
 
+
   return (
-    <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
+    <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <Special>
+        <DogsFromAPI />
+        <button onClick={newDogStats} >Get Fresh Stats</button>
+      </Special>
       {(dogs.map(dog => (
         <ListContainer key={dog.id}>
           <ListGroupItem className='listGroup'>
@@ -35,9 +56,6 @@ const DogList = () => {
           </ListGroupItem>
         </ListContainer>
       )))}
-      <Special onClick={newDogStats}>
-        <DogsFromAPI/>
-      </Special>
     </ListGroup>
   );
 };
@@ -70,7 +88,7 @@ const ButtonsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     `;
 
 const DogImage = styled.div`
@@ -79,7 +97,7 @@ const DogImage = styled.div`
     justify-content: center;
     max-height: 100px;
     max-width: 100px;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 
     img {
       max-height: 100px;
@@ -96,7 +114,7 @@ const DogDetails = styled.div`
     justify-content: center;
     height: 100px;
     width: 55%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 
     p {
       margin: 4px 5px;
@@ -112,5 +130,17 @@ const Special = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-`;
+    flex-direction: column;
+    width: 70%;
+
+    button {
+      margin: 0.5rem;
+      padding: 0.2rem;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+      /* border: 1px solid black; */
+
+    }
+
+    `;

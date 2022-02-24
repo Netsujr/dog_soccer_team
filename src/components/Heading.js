@@ -28,6 +28,7 @@ const NavbarContainer = styled.div`
   display: flex;
   min-width: 30rem;
   border: 1px solid #e5e5e5;
+  margin-bottom: 2rem;
 
   .headingContainer {
     display: flex;

@@ -37,9 +37,9 @@ const ListContainer = styled.div`
     max-width: 30rem;
     background-color: #f5f5f5;
     margin: 10px;
-    border: 1px solid blue;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    border: 1px solid blue;
 
     .listGroup {
       display: flex;
@@ -56,7 +56,7 @@ const ButtonsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     `;
 
 const DogImage = styled.div`
@@ -65,7 +65,7 @@ const DogImage = styled.div`
     justify-content: center;
     max-height: 100px;
     max-width: 100px;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 
     img {
       max-height: 100px;
@@ -81,7 +81,7 @@ const DogDetails = styled.div`
     justify-content: center;
     height: 100px;
     width: 55%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 
     p {
       margin: 4px 5px;

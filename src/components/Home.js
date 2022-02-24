@@ -34,7 +34,7 @@ const HomeContainer = styled.div`
   justify-content: center;
   min-height: 60vh;
   max-width: 100vw;
-  border: 4px solid green;
+  /* border: 4px solid green; */
   `;
 
 const ListContainer = styled.div`
