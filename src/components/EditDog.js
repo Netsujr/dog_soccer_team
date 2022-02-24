@@ -7,8 +7,11 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 const EditDog = () => {
   const { dogs, editDog } = useContext(GlobalContext);
   const navigate = useNavigate();
-  let { slug } = useParams();
-  const currentDog = dogs.find(dog => dog.slug === slug);
+  let { id } = useParams();
+  console.log(useParams());
+  console.log(id);
+  const currentDog = dogs.find(dog => dog.id === parseInt(id));
+
 
   const [selectedDog, setSelectedDog] = useState({
     id: null,
@@ -18,13 +21,9 @@ const EditDog = () => {
     goals: '',
   });
 
-  // console.log(selectedDog?.name ? selectedDog.name : '');
-  // console.log(currentDog);
-
   useEffect(() => {
-    const selectedDog = currentDog;
     console.log(currentDog);
-    setSelectedDog(selectedDog);
+    setSelectedDog(currentDog);
   }, [currentDog, dogs]);
 
 
