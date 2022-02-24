@@ -12,7 +12,7 @@ const DogList = () => {
 
   return (
     <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
-      {!dogs.forEach(dog => dog.id !== dog) ? (dogs.map(dog => (
+      {!dogs.map(dog => dog.id >= 5) ? (dogs.map(dog => (
         <ListContainer key={dog.id}>
           <ListGroupItem className='listGroup'>
             <DogImage>
