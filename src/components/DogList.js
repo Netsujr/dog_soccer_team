@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
+import DefaultDog from './DefaultDog';
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
-//  console.log(dogs);
 
   return (
     <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
-      {dogs.map(dog => (
+      {dogs ? (dogs.map(dog => (
         <ListContainer key={dog.id}>
           <ListGroupItem className='listGroup'>
             <DogImage>
@@ -29,7 +29,9 @@ const DogList = () => {
             </ButtonsContainer>
           </ListGroupItem>
         </ListContainer>
-      ))}
+      ))) : (
+        <DefaultDog />
+      )}
     </ListGroup>
   );
 };

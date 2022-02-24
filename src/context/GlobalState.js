@@ -15,6 +15,7 @@ const initialState = {
   ]
 };
 
+// add dogs to state
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
