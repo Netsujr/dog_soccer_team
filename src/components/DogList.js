@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
+import DogsFromAPI from './DogsFromAPI';
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
+  const [dogRefresh , setDogRefresh] = useState(false);
 
+  const newDogStats = () => {
+    setDogRefresh(!dogRefresh);
+  };
 
   return (
     <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
@@ -30,6 +35,9 @@ const DogList = () => {
           </ListGroupItem>
         </ListContainer>
       )))}
+      <Special onClick={newDogStats}>
+        <DogsFromAPI/>
+      </Special>
     </ListGroup>
   );
 };
@@ -99,3 +107,10 @@ const DogDetails = styled.div`
       font-weight: bold;
     }
     `;
+
+const Special = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+`;

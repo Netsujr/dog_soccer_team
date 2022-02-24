@@ -48,5 +48,6 @@ const ListContainer = styled.div`
 const TeamContainer = styled.div`
   display: flex;
   max-width: 70vw;
+  min-width: 70vw;
   /* border: 1px solid blue; */
   `;
