@@ -4,38 +4,33 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalState';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const EditDog = () => {
-  const { editDog, dogs } = useContext(GlobalContext);
-  const { id } = useParams();
+const EditDog = ({}) => {
+  const { dogs, editDog } = useContext(GlobalContext);
+  const navigate = useNavigate();
+  const { slug } = useParams();
+  let currentDogId = dogs.find(dog => dog.id === slug);
+  // let { id } = useParams();
   const [selectedDog, setSelectedDog] = useState({
-    id: '',
+    id: null,
     name: '',
     breed: '',
     age: '',
     goals: '',
   });
-  const navigate = useNavigate();
+
+  console.log(selectedDog?.name ? selectedDog.name : '');
+
 
   useEffect(() => {
-    const dog = dogs.find(dog => dog.id === id);
-    setSelectedDog(dog);
-  }, [dogs, id]);
+    const dogID = currentDogId;
+    setSelectedDog(dogID);
+  }, [currentDogId, dogs]);
 
-
-  const onNameChange = (e) => {
-    setSelectedDog({ ...selectedDog, [e.target.name]: e.target.value });
-  };
-
-  const onBreedChange = (e) => {
-    setSelectedDog({ ...selectedDog, breed: e.target.value });
-  };
-
-  const onAgeChange = (e) => {
-    setSelectedDog({ ...selectedDog, [e.age.target]: e.target.value });
-  };
-
-  const onGoalsChange = (e) => {
-    setSelectedDog({ ...selectedDog, goals: e.target.value });
+  const handleChange = (userKey, newValue) => {
+    setSelectedDog({
+      ...selectedDog,
+      [userKey]: newValue,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -49,15 +44,37 @@ const EditDog = () => {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="name">Edit Dog</Label>
+
+          {/* {console.log(selectedDog.name)} */}
           <Input
-          type="text"
-          value={selectedDog.name}
-          onChange={onNameChange}
-          placeholder="Name"
+            type="text"
+            value={selectedDog?.name ? selectedDog.name : ''}
+            onChange={(e) => handleChange('name', e.target.value)}
+            placeholder="Name"
           />
-          <Input type="text" value={selectedDog.breed} onChange={onBreedChange} placeholder="Breed" />
-          <Input type="number" value={selectedDog.age} onChange={onAgeChange} placeholder="Age" />
-          <Input type="number" value={selectedDog.goals} onChange={onGoalsChange} placeholder="Goals" />
+
+
+          <Input
+            type="text"
+            value={selectedDog?.breed ? selectedDog.breed : ''}
+            onChange={(e) => handleChange('breed', e.target.value)}
+            placeholder="Breed"
+          />
+
+          <Input
+            type="number"
+            value={selectedDog?.age ? selectedDog.age : ''}
+            onChange={(e) => handleChange('age', e.target.value)}
+            placeholder="Age"
+          />
+
+          <Input
+            type="number"
+            value={selectedDog?.goals ? selectedDog.goals : ''}
+            onChange={(e) => handleChange('goals', e.target.value)}
+            placeholder="Goals"
+          />
+
         </FormGroup>
         <ButtonsContainer>
           <Button>Submit</Button>
