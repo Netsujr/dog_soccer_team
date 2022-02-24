@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DogList from './DogList';
 import Heading from './Heading';
 import DogsFromAPI from './DogsFromAPI';
 import styled from 'styled-components';
+import { Tabs, Tab, Appbar } from '@material-ui/core';
 
 const Home = () => {
+const [selectedTab , setSelectedTab] = useState(0);
+const handleChange = (event, newSelectedTab) => {
+  setSelectedTab(newSelectedTab);
+};
+
   return (
     <>
       <Heading />
+      <Tabs value={selectedTab} onChange={handleChange}>
+        <Tab label="Dogs from API" />
+        <Tab label="Dog from API" />
+      </Tabs>
+
       <HomeContainer>
         <ListContainer className='overflow-auto'>
           <DogsFromAPI />
