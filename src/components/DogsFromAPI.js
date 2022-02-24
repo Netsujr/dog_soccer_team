@@ -9,16 +9,16 @@ const DogsFromAPI = () => {
   const [randomImage, setRandomImage] = useState('');
 
   useEffect(() => {
-    getBreedsData().then(data => {
-      setBreeds(Object.keys(data));
-    });
-  }, []);
-
-  useEffect(() => {
     getRandomImage(breeds[0]).then(data => {
       setRandomImage(data);
     });
   }, [breeds]);
+
+  useEffect(() => {
+    getBreedsData().then(data => {
+      setBreeds(Object.keys(data));
+    });
+  }, []);
 
   const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
   const randomDogAge = Math.floor(Math.random() * 20) + 1;
