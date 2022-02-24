@@ -1,18 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext, initialState } from '../context/GlobalState';
 import DefaultDog from './DefaultDog';
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
-
-
+  const initialState = {
+    dogs: {
+      name: '',
+      breed: '',
+      age: '',
+    }
+  };
+  const [dog, setDog] = useState(initialState);
   return (
     <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
-      {!dogs.map(dog => dog.id >= 5) ? (dogs.map(dog => (
+      {dog ? (dogs.map(dog => (
         <ListContainer key={dog.id}>
           <ListGroupItem className='listGroup'>
             <DogImage>
@@ -32,8 +38,8 @@ const DogList = () => {
         </ListContainer>
       ))) : (
         dogs.map(dog => (
-      <DefaultDog />
-      )))}
+          <DefaultDog key={dog.id} />
+        )))}
     </ListGroup>
   );
 };
