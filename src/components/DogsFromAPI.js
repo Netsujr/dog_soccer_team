@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getBreedsData, getRandomImage } from '../api';
 import styled from 'styled-components';
+import { FaInfo } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const dogNames = require('dog-names');
 
@@ -43,6 +45,7 @@ const DogsFromAPI = () => {
           <h5>Goals: </h5>
           <p>{randomGoals}</p>
         </GoalsContainer>
+        <Link to='/'><FaInfo className='displayDog' /></Link>
       </div>
     </DogsContainer>
   );
@@ -58,7 +61,19 @@ const DogsContainer = styled.div`
   padding: 5px;
   border: 1px solid black;
   margin: 3px;
-  z-index: 1;
+  position: relative;
+
+  .displayDog {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border: 1px solid black;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding: 5px;
+    color: black;
+  }
 
   .dog {
     display: flex;

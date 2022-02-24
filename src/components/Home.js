@@ -1,21 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import DogList from './DogList';
 import Heading from './Heading';
 import DogsFromAPI from './DogsFromAPI';
 import styled from 'styled-components';
-import DefaultDog from './DefaultDog';
 
 const Home = () => {
-// add dog to globalContext
-
   return (
     <>
       <Heading />
       <HomeContainer>
         <ListContainer className='overflow-auto'>
-          <DogsFromAPI />
-          <DogsFromAPI />
-          <DogsFromAPI />
           <DogsFromAPI />
           <DogsFromAPI />
           <DogsFromAPI />
