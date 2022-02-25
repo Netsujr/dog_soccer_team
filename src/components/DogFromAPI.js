@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getBreedsData, getRandomImage } from '../api';
 import styled from 'styled-components';
+import { FaBone } from 'react-icons/fa';
 const dogNames = require('dog-names');
 
-const DogsFromAPI = () => {
+const DogFromAPI = () => {
   const [breeds, setBreeds] = useState([]);
   const [randomImage, setRandomImage] = useState('');
+  const [dogRefresh, setDogRefresh] = useState(false);
+
+  const newDogStats = () => {
+    setDogRefresh(!dogRefresh);
+  };
 
   useEffect(() => {
     getRandomImage(breeds[0]).then(data => {
@@ -19,28 +25,42 @@ const DogsFromAPI = () => {
     });
   }, []);
 
+  const changeImage = () => {
+    getRandomImage(breeds[0]).then(data => {
+      setRandomImage(data);
+    });
+  };
+
   const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
   const randomDogAge = Math.floor(Math.random() * 20) + 1;
-  const randomGoals = Math.floor(Math.random() * 10) + 10;
+  const randomGoals = Math.floor(Math.random() * 20) + 20;
 
   return (
     <>
       <DogsContainer>
+        <Special>
+          <button
+            onClick={(newDogStats, changeImage)}
+            >
+            <FaBone />
+          </button>
+          <p>New Dog</p>
+        </Special>
         <div className='dog'>
           <img src={randomImage} alt="" />
-          <h5>{dogNames.allRandom()}</h5>
+          <h1>{dogNames.allRandom()}</h1>
         </div>
         <div className='info'>
           <BreedContainer>
-            <h5>Breed: </h5>
+            <h1>Breed: </h1>
             <p>{randomBreed}</p>
           </BreedContainer>
           <AgeContainer>
-            <h5>Age: </h5>
+            <h1>Age: </h1>
             <p>{randomDogAge}</p>
           </AgeContainer>
           <GoalsContainer>
-            <h5>Goals: </h5>
+            <h1>Goals: </h1>
             <p>{randomGoals}</p>
           </GoalsContainer>
         </div>
@@ -49,19 +69,20 @@ const DogsFromAPI = () => {
   );
 };
 
-export default DogsFromAPI;
+export default DogFromAPI;
 
 const DogsContainer = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 30vw;
+  width: 60vw;
   padding: 5px;
   margin: 3px;
   position: relative;
   border: 1px solid black;
   border-radius: 5px;
   background-color: #f5f5f5;
+  position: relative;
 
   .dog {
     display: flex;
@@ -80,13 +101,13 @@ const DogsContainer = styled.div`
   p {
     margin-left: 10px;
     margin-bottom: 6px;
-    font-size: 16px;
+    font-size: 36px;
 
   }
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     margin-right: 15px;
   }
@@ -109,3 +130,27 @@ const GoalsContainer = styled.div`
   justify-content: center;
   align-items: center;
   `
+
+const Special = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  button {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    /* border: 1px solid black; */
+  }
+  `;

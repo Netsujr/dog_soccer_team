@@ -4,25 +4,14 @@ import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
-import DogsFromAPI from './DogsFromAPI';
 import field from '../images/footballField.png';
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
-  const [dogRefresh, setDogRefresh] = useState(false);
-
-  const newDogStats = () => {
-    setDogRefresh(!dogRefresh);
-    console.log(dogRefresh);
-  };
 
   return (
     <Container>
-      <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <Special>
-          <DogsFromAPI />
-          <button onClick={newDogStats} >Get Fresh Stats</button>
-        </Special>
+      <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
         {(dogs.map(dog => (
           <ListContainer key={dog.id}>
             <ListGroupItem className='listGroup'>
@@ -54,6 +43,7 @@ const Container = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    min-height: 80vh;
     `;
 
 const ListContainer = styled.div`
@@ -118,23 +108,4 @@ const DogDetails = styled.div`
       color: red;
       font-weight: bold;
     }
-    `;
-
-const Special = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 70%;
-
-    button {
-      margin: 0.5rem;
-      padding: 0.2rem;
-      border-radius: 5px;
-      background-color: #f5f5f5;
-      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-      /* border: 1px solid black; */
-
-    }
-
     `;
