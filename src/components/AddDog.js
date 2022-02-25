@@ -10,7 +10,7 @@ const AddDog = () => {
 
   const { addDog } = useContext(GlobalContext);
   const [name, setName] = useState('');
-  const [imageSelected, setImageSelected] = useState('');
+  const [image, setImage] = useState('');
   const [breed, setBreed] = useState('');
   const [age, setAge] = useState('');
   const [goals, setGoals] = useState('');
@@ -24,10 +24,13 @@ const AddDog = () => {
       breed,
       age,
       goals,
+      image
     };
     addDog(newDog);
     navigate('/');
+    console.log(newDog);
   };
+
 
   const onNameChange = (e) => {
     setName(e.target.value);
@@ -47,12 +50,12 @@ const AddDog = () => {
 
   const uploadImage = (files) => {
     const formData = new FormData();
-    formData.append('file', imageSelected);
+    formData.append('file', image);
     formData.append('upload_preset', 'doggyupload');
 
     axios.post('https://api.cloudinary.com/v1_1/netsujr/image/upload', formData)
     .then(res => {
-      setImageSelected(res.data.secure_url);
+      setImage(res.data.secure_url);
     });
   };
 
@@ -66,7 +69,7 @@ const AddDog = () => {
           <Input type="text" value={breed} onChange={onBreedChange} placeholder="Breed" />
           <Input type='number' value={age} onChange={onAgeChange} placeholder="Age" />
           <Input type="number" value={goals} onChange={onGoalsChange} placeholder="Goals" />
-          <Input type='file' onChange={(event) => setImageSelected(event.target.files[0])} />
+          <Input type='file' onChange={(event) => setImage(event.target.files[0])} />
           <Button onClick={uploadImage}>Upload</Button>
         </FormGroup>
         <ButtonsContainer>
