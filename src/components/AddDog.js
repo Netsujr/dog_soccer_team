@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { GlobalContext } from '../context/GlobalState';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 
 const AddDog = () => {
@@ -16,10 +15,12 @@ const AddDog = () => {
   const [goals, setGoals] = useState('');
   const navigate = useNavigate();
 
+  const randomID = new Date().getUTCMilliseconds();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newDog = {
-      id: uuid(),
+      id: randomID,
       name,
       breed,
       age,

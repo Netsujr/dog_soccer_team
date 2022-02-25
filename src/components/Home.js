@@ -30,7 +30,7 @@ const Home = () => {
 
   const breedsList = breeds.map(breed => breed.toUpperCase());
 
-  console.log(breedsList);
+  // console.log(breedsList);
 
   return (
     <>
