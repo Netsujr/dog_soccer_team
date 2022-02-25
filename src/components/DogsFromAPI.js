@@ -21,7 +21,7 @@ const DogsFromAPI = () => {
 
   const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
   const randomDogAge = Math.floor(Math.random() * 20) + 1;
-  const randomGoals = Math.floor(Math.random() * 10) + 1;
+  const randomGoals = Math.floor(Math.random() * 10) + 10;
 
   return (
     <>
