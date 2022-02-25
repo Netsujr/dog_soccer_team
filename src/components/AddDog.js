@@ -63,8 +63,8 @@ const AddDog = () => {
   return (
     <FormContainer>
       <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label for="name">Add a Dog to Team</Label>
+        <FormGroup className='d-flex flex-column align-items-center p-3'>
+          <Label for="name"><h1>Add a Dog to Team</h1></Label>
           <Input type="text" value={name} onChange={onNameChange} placeholder="Name" />
           <Input type="text" value={breed} onChange={onBreedChange} placeholder="Breed" />
           <Input type='number' value={age} onChange={onAgeChange} placeholder="Age" />
@@ -102,10 +102,11 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 10px;
   `;
 
 const ImageContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   `
