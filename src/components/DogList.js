@@ -1,13 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
 import field from '../images/footballField.png';
+import { getRandomImage, getBreedsData } from '../api';
+
 
 const DogList = () => {
   const { dogs, deleteDog } = useContext(GlobalContext);
+  const [randomImage, setRandomImage] = useState('');
+  const [breeds, setBreeds] = useState([]);
+
+  useEffect(() => {
+    getRandomImage(breeds[0]).then(data => {
+      setRandomImage(data);
+    });
+  }, [breeds]);
+
+  useEffect(() => {
+    getBreedsData().then(data => {
+      setBreeds(Object.keys(data));
+    });
+  }, []);
+
 
   return (
     <Container>
@@ -16,7 +33,7 @@ const DogList = () => {
           <ListContainer key={dog.id}>
             <ListGroupItem className='listGroup'>
               <DogImage>
-                <img src={dog.image ? dog.image : 'No image'} alt={dog.name} />
+                <img src={dog.image ? dog.image : randomImage} alt={dog.name} />
               </DogImage>
               <DogDetails>
                 <p>Name: {dog.name ? dog.name : <span>Add name</span>}</p>

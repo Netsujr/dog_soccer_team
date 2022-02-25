@@ -6,6 +6,7 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
 const AddDog = () => {
+
   const { addDog } = useContext(GlobalContext);
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
