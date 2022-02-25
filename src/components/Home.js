@@ -42,10 +42,13 @@ const Home = () => {
           <Tab label="Top Dogs of the Week" />
           <Tab label="Top Dog" />
         </Tabs>
+        {/* --------------------TEAM-------------------------- */}
         {selectedTab === 0 &&
           <TeamContainer>
             <DogList />
           </TeamContainer>}
+        {/* --------------------API-List-------------------------- */}
+
         {selectedTab === 1 &&
           <ListContainer>
             {breedsList.map((breed, index) => {
@@ -55,6 +58,7 @@ const Home = () => {
                 );
             })}
           </ListContainer>}
+        {/* --------------------API-Dog-------------------------- */}
         {selectedTab === 2 && <DogsFromAPI />}
       </HomeContainer>
     </>

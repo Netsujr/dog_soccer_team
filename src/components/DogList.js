@@ -18,7 +18,7 @@ const DogList = () => {
 
   return (
     <Container>
-      <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
         {/* <Special>
           <DogsFromAPI />
           <button onClick={newDogStats} >Get Fresh Stats</button>
@@ -54,6 +54,7 @@ const Container = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    min-height: 80vh;
     `;
 
 const ListContainer = styled.div`
