@@ -60,6 +60,7 @@ const Container = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     min-height: 80vh;
+    min-width: 70vw;
     `;
 
 const ListContainer = styled.div`
