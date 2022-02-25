@@ -54,9 +54,9 @@ const AddDog = () => {
     formData.append('upload_preset', 'doggyupload');
 
     axios.post('https://api.cloudinary.com/v1_1/netsujr/image/upload', formData)
-    .then(res => {
-      setImage(res.data.secure_url);
-    });
+      .then(res => {
+        setImage(res.data.secure_url);
+      });
   };
 
 
@@ -69,8 +69,10 @@ const AddDog = () => {
           <Input type="text" value={breed} onChange={onBreedChange} placeholder="Breed" />
           <Input type='number' value={age} onChange={onAgeChange} placeholder="Age" />
           <Input type="number" value={goals} onChange={onGoalsChange} placeholder="Goals" />
-          <Input type='file' onChange={(event) => setImage(event.target.files[0])} />
-          <Button onClick={uploadImage}>Upload</Button>
+          <ImageContainer>
+            <Input type='file' onChange={(event) => setImage(event.target.files[0])} />
+            <Button className='btn btn-success' onClick={uploadImage}>Upload</Button>
+          </ImageContainer>
         </FormGroup>
         <ButtonsContainer>
           <Button>Submit</Button>
@@ -101,3 +103,9 @@ const ButtonsContainer = styled.div`
   align-items: center;
   width: 100%;
   `;
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
