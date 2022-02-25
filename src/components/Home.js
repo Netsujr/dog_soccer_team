@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import DogList from './DogList';
 import Heading from './Heading';
 import DogsFromAPI from './DogsFromAPI';
+import DogFromAPI from './DogFromAPI';
 import styled from 'styled-components';
-import { Tabs, Tab, Appbar } from '@material-ui/core';
+import { Tabs, Tab } from '@material-ui/core';
 import { getBreedsData, getRandomImage } from '../api';
 
 const Home = () => {
@@ -37,7 +38,7 @@ const Home = () => {
         onClick={() => setSelectedTab(0)}
       />
       <HomeContainer>
-        <Tabs value={selectedTab} onChange={handleChange}>
+        <Tabs style={{marginBottom: '20px'}} value={selectedTab} onChange={handleChange}>
           <Tab label="Your Team" />
           <Tab label="Top Dogs of the Week" />
           <Tab label="Top Dog" />
@@ -59,7 +60,7 @@ const Home = () => {
             })}
           </ListContainer>}
         {/* --------------------API-Dog-------------------------- */}
-        {selectedTab === 2 && <DogsFromAPI />}
+        {selectedTab === 2 && <DogFromAPI />}
       </HomeContainer>
     </>
   );
@@ -72,7 +73,7 @@ const HomeContainer = styled.div`
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        border: 4px solid green;
+        /* border: 4px solid green; */
         `;
 
 const ListContainer = styled.div`
