@@ -7,6 +7,11 @@ const DogsFromAPI = () => {
   const [breeds, setBreeds] = useState([]);
   const [randomImage, setRandomImage] = useState('');
 
+  const capitalize = (s) => {
+    if (typeof s !== 'string') return '';
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+
   useEffect(() => {
     getRandomImage(breeds[0]).then(data => {
       setRandomImage(data);
@@ -33,7 +38,7 @@ const DogsFromAPI = () => {
         <div className='info'>
           <BreedContainer>
             <h5>Breed: </h5>
-            <p>{randomBreed}</p>
+            <p>{capitalize(randomBreed)}</p>
           </BreedContainer>
           <AgeContainer>
             <h5>Age: </h5>

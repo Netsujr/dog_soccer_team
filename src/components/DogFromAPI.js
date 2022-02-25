@@ -13,6 +13,11 @@ const DogFromAPI = () => {
     setDogRefresh(!dogRefresh);
   };
 
+  const capitalize = (s) => {
+    if (typeof s !== 'string') return '';
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+
   useEffect(() => {
     getRandomImage(breeds[0]).then(data => {
       setRandomImage(data);
@@ -53,7 +58,7 @@ const DogFromAPI = () => {
         <div className='info'>
           <BreedContainer>
             <h1>Breed: </h1>
-            <p>{randomBreed}</p>
+            <p>{capitalize(randomBreed)}</p>
           </BreedContainer>
           <AgeContainer>
             <h1>Age: </h1>
