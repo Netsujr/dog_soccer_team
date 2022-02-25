@@ -11,7 +11,7 @@ const EditDog = () => {
   // console.log(useParams());
   // console.log(id);
   const currentDog = dogs.find(dog => dog.id === parseInt(id));
-
+  console.log(currentDog);
 
   const [selectedDog, setSelectedDog] = useState({
     id: null,
@@ -43,8 +43,8 @@ const EditDog = () => {
   return (
     <FormContainer>
       <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label for="name">Edit Dog</Label>
+        <FormGroup className='d-flex flex-column align-items-center p-3'>
+          <Label for="name"><h1>Edit Dog</h1></Label>
 
           {/* {console.log(selectedDog.name)} */}
           <Input
@@ -109,4 +109,5 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 10px;
   `;
