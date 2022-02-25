@@ -25,7 +25,6 @@ const DogList = () => {
     });
   }, []);
 
-
   return (
     <Container>
       <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
