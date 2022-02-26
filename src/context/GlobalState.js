@@ -1,17 +1,29 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
+import { getBreedsData } from '../api';
+const dogNames = require('dog-names');
+const random = Math.floor(Math.random() * 80) + 1;
 
-const randomNumber = () => {
-  return Math.floor(Math.random() * 10 + 1);
-};
+function randomAge() {
+  return (Math.floor(Math.random() * 20) + 1).toString();
+}
+
+function randomGoals() {
+  return (Math.floor(Math.random() * 15) + 1).toString();
+}
+
+// getBreedsData().then(data => {
+//   console.log(Object.keys(data)[random]);
+// });
+
 
 const initialState = {
   dogs: [
-    { id: 1, name: "", age: "", breed: "", goals: "", image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
-    { id: 2, name: "Bruno", age: 6, breed: "Jack Russell", goals: randomNumber().toString(), image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
-    { id: 3, name: "Silva", age: 4, breed: "Labrador", goals: randomNumber().toString(), image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
-    { id: 4, name: "Boppy", age: 5, breed: "Poodle", goals: randomNumber().toString(), image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
-    ]
+    { id: 1, name: `${dogNames.allRandom()}`, age: "", breed: "", goals: "", image: '' },
+    { id: 2, name: `${dogNames.allRandom()}`, age: randomAge(), breed: '', goals: randomGoals(), image: '' },
+    { id: 3, name: `${dogNames.allRandom()}`, age: randomAge(), breed: '', goals: randomGoals(), image: '' },
+    { id: 4, name: `${dogNames.allRandom()}`, age: randomAge(), breed: "Poodle", goals: randomGoals(), image: '' },
+  ]
 };
 
 // add dogs to state
@@ -20,20 +32,20 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  const addDog= (dog) => {
+  const addDog = (dog) => {
     dispatch({
       type: "ADD_DOG",
       payload: dog
     });
   }
-//-----------------------------------------------------
+  //-----------------------------------------------------
   const deleteDog = (id) => {
     dispatch({
       type: "DELETE_DOG",
       payload: id
     });
   }
-//-----------------------------------------------------
+  //-----------------------------------------------------
   const editDog = (dog) => {
     dispatch({
       type: "EDIT_DOG",

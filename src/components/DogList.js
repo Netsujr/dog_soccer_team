@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
-import field from '../images/footballField.png';
 import { getRandomImage, getBreedsData } from '../api';
 
 
-const DogList = () => {
-  const { dogs, deleteDog } = useContext(GlobalContext);
+const DogList = ({ dog }) => {
+  const { deleteDog } = useContext(GlobalContext);
   const [randomImage, setRandomImage] = useState('');
   const [breeds, setBreeds] = useState([]);
+  const randomNumber = () => {
+    return Math.floor(Math.random() * 70) + 1;
+  };
+
+  const randomBreed = breeds[randomNumber()];
 
   useEffect(() => {
     getRandomImage(breeds[0]).then(data => {
@@ -26,103 +30,90 @@ const DogList = () => {
   }, []);
 
   return (
-    <Container>
-      <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
-        {(dogs.map(dog => (
-          <ListContainer key={dog.id}>
-            <ListGroupItem className='listGroup'>
-              <DogImage>
-                <img src={dog.image ? dog.image : randomImage} alt={dog.name} />
-              </DogImage>
-              <DogDetails>
-                <p>Name: {dog.name ? dog.name : <span>Add name</span>}</p>
-                <p>Breed: {dog.breed ? dog.breed : <span>Add breed</span>}</p>
-                <p>Age: {dog.age ? dog.age : <span>Add age</span>}</p>
-                <p>Goals: {dog.goals ? dog.goals : <span>Add goals</span>}</p>
-              </DogDetails>
-              <ButtonsContainer>
-                <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to={`/edit/${dog.id}`}><FaEdit /></Link>
-                <Button style={{ marginTop: '5px', padding: '0.2rem' }} onClick={() => deleteDog(dog.id)} ><FaTrashAlt /></Button>
-              </ButtonsContainer>
-            </ListGroupItem>
-          </ListContainer>
-        )))}
-      </ListGroup>
-    </Container>
+    <ListGroup>
+      <ListContainer key={dog.id}>
+        <ListGroupItem className='listGroup'>
+          <DogImage>
+            <img src={dog.image ? dog.image : randomImage} alt={dog.name} />
+          </DogImage>
+          <DogDetails>
+            <p>Name: {dog.name ? dog.name : <span>Add name</span>}</p>
+            <p>Breed: {dog.breed ? dog.breed : randomBreed}</p>
+            <p>Age: {dog.age ? dog.age : <span>Add age</span>}</p>
+            <p>Goals: {dog.goals ? dog.goals : <span>Add goals</span>}</p>
+          </DogDetails>
+          <ButtonsContainer>
+            <Link style={{ padding: '0.2rem 0.4rem' }} className='btn btn-primary' to={`/edit/${dog.id}`}><FaEdit /></Link>
+            <Button style={{ marginTop: '5px', padding: '0.2rem' }} onClick={() => deleteDog(dog.id)} ><FaTrashAlt /></Button>
+          </ButtonsContainer>
+        </ListGroupItem>
+      </ListContainer>
+    </ListGroup>
   );
 };
 
 export default DogList;
 
-const Container = styled.div`
-    background-image: url('${field}');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 80vh;
-    min-width: 70vw;
-    `;
-
 const ListContainer = styled.div`
-    display: flex;
-    align-items: space-between;
-    justify-content: center;
-    max-width: 30rem;
-    background-color: #f5f5f5;
-    margin: 10px;
-    border: 1px solid blue;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  display: flex;
+  align-items: space-between;
+  justify-content: center;
+  max-width: 30rem;
+  background-color: #f5f5f5;
+  margin: 10px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 
-    .listGroup {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-width: 20rem;
-      max-height: 100px;
-      padding: 0.2rem;
-    }
-    `;
+  .listGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 20rem;
+    max-height: 100px;
+    padding: 0.2rem;
+  }
+  `;
 
 const ButtonsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* border: 1px solid yellow; */
-    `;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid yellow; */
+  `;
 
 const DogImage = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100px;
+  max-width: 100px;
+  /* border: 1px solid pink; */
+
+  img {
     max-height: 100px;
     max-width: 100px;
-    /* border: 1px solid pink; */
+    object-fit: cover;
+  }
 
-    img {
-      max-height: 100px;
-      max-width: 100px;
-      object-fit: cover;
-    }
-
-    `;
+  `;
 
 const DogDetails = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    height: 100px;
-    width: 55%;
-    /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  height: 100px;
+  width: 55%;
+  /* border: 1px solid red; */
 
-    p {
-      margin: 4px 5px;
-    }
+  p {
+    margin: 4px 5px;
+  }
 
-    span {
-      color: red;
-      font-weight: bold;
-    }
-    `;
+  span {
+    color: red;
+    font-weight: bold;
+  }
+  `;
