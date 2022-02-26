@@ -1,5 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
+import DogsFromAPI from "../components/DogsFromAPI";
+
 
 const randomNumber = () => {
   return Math.floor(Math.random() * 10 + 1);
