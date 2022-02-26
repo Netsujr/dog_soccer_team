@@ -1,14 +1,15 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 import { getRandomImage, getBreedsData } from '../api';
+const dogNames = require('dog-names');
 
 
 const initialState = {
   dogs: [
-    { id: 1, name: "", age: "", breed: "", goals: "", image: '' },
-    { id: 2, name: "Bruno", age: 6, breed: "Jack Russell", goals: '', image: getRandomImage('').message },
-    { id: 3, name: "Silva", age: 4, breed: "Labrador", goals: '', image: getRandomImage('').message },
-    { id: 4, name: "Boppy", age: 5, breed: "Poodle", goals: '', image: getRandomImage('').message },
+    { id: 1, name: `${dogNames.allRandom()}`, age: "", breed: "", goals: "", image: '' },
+    { id: 2, name: `${dogNames.allRandom()}`, age: 6, breed: "Jack Russell", goals: '', image: getRandomImage('').message },
+    { id: 3, name: `${dogNames.allRandom()}`, age: 4, breed: "Labrador", goals: '', image: getRandomImage('').message },
+    { id: 4, name: `${dogNames.allRandom()}`, age: 5, breed: "Poodle", goals: '', image: getRandomImage('').message },
     ]
 };
 

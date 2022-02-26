@@ -7,7 +7,7 @@ import { GlobalContext } from '../context/GlobalState';
 import { getRandomImage, getBreedsData } from '../api';
 
 
-const DogList = ( {dog} ) => {
+const DogList = ({ dog }) => {
   const { deleteDog } = useContext(GlobalContext);
   const [randomImage, setRandomImage] = useState('');
   const [breeds, setBreeds] = useState([]);
@@ -29,7 +29,7 @@ const DogList = ( {dog} ) => {
           <ListContainer key={dog.id}>
             <ListGroupItem className='listGroup'>
               <DogImage>
-                <img src={dog.image ? dog.image : randomImage} alt={dog.name} />
+                <img src={dog.image ? dog.image : ''} alt={dog.name} />
               </DogImage>
               <DogDetails>
                 <p>Name: {dog.name ? dog.name : <span>Add name</span>}</p>
