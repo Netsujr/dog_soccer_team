@@ -1,6 +1,21 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
   switch (action.type) {
+    case "CAPITALIZE_NAME":
+      return {
+        ...state,
+        dogs: state.dogs.map(dog => {
+          if (dog.id === action.payload.id) {
+            return {
+              ...dog,
+              name: action.payload.name.toUpperCase()
+            };
+          } else {
+            return dog;
+          }
+        })
+      };
+    //-----------------------------------------------------
     case 'ADD_DOG':
       return {
         ...state,
