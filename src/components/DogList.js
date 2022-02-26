@@ -4,12 +4,11 @@ import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
-import field from '../images/footballField.png';
 import { getRandomImage, getBreedsData } from '../api';
 
 
-const DogList = () => {
-  const { dogs, deleteDog } = useContext(GlobalContext);
+const DogList = ( {dog} ) => {
+  const { deleteDog } = useContext(GlobalContext);
   const [randomImage, setRandomImage] = useState('');
   const [breeds, setBreeds] = useState([]);
 
@@ -26,9 +25,7 @@ const DogList = () => {
   }, []);
 
   return (
-    <Container>
-      <ListGroup style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
-        {(dogs.map(dog => (
+    <ListGroup>
           <ListContainer key={dog.id}>
             <ListGroupItem className='listGroup'>
               <DogImage>
@@ -46,22 +43,11 @@ const DogList = () => {
               </ButtonsContainer>
             </ListGroupItem>
           </ListContainer>
-        )))}
       </ListGroup>
-    </Container>
   );
 };
 
 export default DogList;
-
-const Container = styled.div`
-    background-image: url('${field}');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 80vh;
-    min-width: 70vw;
-    `;
 
 const ListContainer = styled.div`
     display: flex;

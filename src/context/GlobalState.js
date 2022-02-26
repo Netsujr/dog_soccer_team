@@ -1,18 +1,14 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import DogsFromAPI from "../components/DogsFromAPI";
+import { getRandomImage, getBreedsData } from '../api';
 
-
-const randomNumber = () => {
-  return Math.floor(Math.random() * 10 + 1);
-};
 
 const initialState = {
   dogs: [
-    { id: 1, name: "", age: "", breed: "", goals: "", image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
-    { id: 2, name: "Bruno", age: 6, breed: "Jack Russell", goals: randomNumber().toString(), image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
-    { id: 3, name: "Silva", age: 4, breed: "Labrador", goals: randomNumber().toString(), image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
-    { id: 4, name: "Boppy", age: 5, breed: "Poodle", goals: randomNumber().toString(), image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png" },
+    { id: 1, name: "", age: "", breed: "", goals: "", image: '' },
+    { id: 2, name: "Bruno", age: 6, breed: "Jack Russell", goals: '', image: getRandomImage('').message },
+    { id: 3, name: "Silva", age: 4, breed: "Labrador", goals: '', image: getRandomImage('').message },
+    { id: 4, name: "Boppy", age: 5, breed: "Poodle", goals: '', image: getRandomImage('').message },
     ]
 };
 
