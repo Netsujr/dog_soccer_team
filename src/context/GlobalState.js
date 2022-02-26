@@ -12,21 +12,16 @@ function randomGoals() {
   return (Math.floor(Math.random() * 15) + 1).toString();
 }
 
-function breeds() {
-  getBreedsData().then(data => {
-    return console.log(Object.keys(data)[random]);
-  });
-};
-
-
-
+// getBreedsData().then(data => {
+//   console.log(Object.keys(data)[random]);
+// });
 
 
 const initialState = {
   dogs: [
     { id: 1, name: `${dogNames.allRandom()}`, age: "", breed: "", goals: "", image: '' },
-    { id: 2, name: `${dogNames.allRandom()}`, age: randomAge(), breed: breeds(), goals: randomGoals(), image: '' },
-    { id: 3, name: `${dogNames.allRandom()}`, age: randomAge(), breed: "Labrador", goals: randomGoals(), image: '' },
+    { id: 2, name: `${dogNames.allRandom()}`, age: randomAge(), breed: '', goals: randomGoals(), image: '' },
+    { id: 3, name: `${dogNames.allRandom()}`, age: randomAge(), breed: '', goals: randomGoals(), image: '' },
     { id: 4, name: `${dogNames.allRandom()}`, age: randomAge(), breed: "Poodle", goals: randomGoals(), image: '' },
   ]
 };
