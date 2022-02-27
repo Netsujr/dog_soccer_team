@@ -166,7 +166,7 @@ const NewDogButton = styled.div`
     font-size: 46px;
     color: black;
     cursor: pointer;
-    transition: all 1s ease-in-out;
+    transition: all .3s ease-in-out;
     &:hover {
       transform: scale(1.3);
       color: green;
