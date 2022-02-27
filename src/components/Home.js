@@ -87,7 +87,6 @@ const DogsContainer = styled.div`
           flex-wrap: wrap;
           align-content: start;
           justify-content: center;
-          /* border: 5px solid red; */
           `;
 
 const HomeContainer = styled.div`
@@ -95,14 +94,12 @@ const HomeContainer = styled.div`
           justify-content: center;
           flex-direction: column;
           align-items: center;
-          /* border: 4px solid green; */
           `;
 
 const ListContainer = styled.div`
           display: flex;
           justify-content: space-around;
           max-width: 65vw;
-          /* border: 1px solid green; */
           flex-wrap: wrap;
           `;
 
@@ -110,5 +107,4 @@ const TeamContainer = styled.div`
           display: flex;
           max-width: 70vw;
           min-width: 70vw;
-          /* border: 1px solid blue; */
           `;
