@@ -33,6 +33,7 @@ const HeaderContainer = styled.header`
   height: 25rem;
   width: 100%;
   overflow: hidden;
+  object-fit: contain;
 
   video {
     position: absolute;
@@ -43,10 +44,7 @@ const HeaderContainer = styled.header`
     width: auto;
     height: auto;
     z-index: 0;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-40%);
   }
 
   .container {
