@@ -44,11 +44,11 @@ const DogFromAPI = () => {
     <>
       <DogsContainer>
         <Special>
-          <button
-            onClick={(newDogStats, changeImage)}
-            >
-            <FaBone />
-          </button>
+          <NewDogButton>
+            <FaBone
+              className='bone'
+              onClick={(newDogStats, changeImage)} />
+          </NewDogButton>
           <p>New Dog</p>
         </Special>
         <div className='dog'>
@@ -142,19 +142,34 @@ const Special = styled.div`
   align-items: center;
   flex-direction: column;
   position: absolute;
-  top: 0;
-  right: 0;
+  bottom: 20px;
+  right: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  padding: 5px;
+  margin: 3px;
+  box-shadow: 0 0 10px black;
 
   p {
     font-size: 14px;
     margin: 0;
   }
-
-  button {
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  }
   `;
+
+const NewDogButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bone {
+    font-size: 46px;
+    color: black;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+    &:hover {
+      transform: scale(1.3);
+      color: green;
+    }
+
+    `;

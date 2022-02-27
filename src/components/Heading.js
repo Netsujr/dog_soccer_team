@@ -6,7 +6,7 @@ import { Navbar, Nav, NavItem, NavbarBrand, Container } from 'reactstrap';
 const Heading = () => {
   return (
     <NavbarContainer>
-      <Navbar color="dark" dark>
+      <Navbar style={{ borderRadius: '15px' }} color="dark" dark>
         <Container className='headingContainer'>
           <NavbarBrand href="/">Doggy Team</NavbarBrand>
           <Nav>
@@ -29,6 +29,7 @@ const NavbarContainer = styled.div`
   min-width: 30rem;
   border: 1px solid #e5e5e5;
   margin-bottom: 2rem;
+  border-radius: 15px;
 
   .headingContainer {
     display: flex;

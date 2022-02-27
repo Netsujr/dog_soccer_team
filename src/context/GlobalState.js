@@ -1,8 +1,8 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import { getBreedsData } from '../api';
 const dogNames = require('dog-names');
-const random = Math.floor(Math.random() * 80) + 1;
+// import { getBreedsData } from '../api';
+// const random = Math.floor(Math.random() * 80) + 1;
 
 function randomAge() {
   return (Math.floor(Math.random() * 20) + 1).toString();

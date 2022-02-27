@@ -41,7 +41,7 @@ const Home = () => {
         onClick={() => setSelectedTab(0)}
       />
       <HomeContainer>
-        <Tabs style={{ marginBottom: '20px' }} value={selectedTab} onChange={handleChange}>
+        <Tabs style={{ marginBottom: '20px', color: 'white' }} value={selectedTab} onChange={handleChange}>
           <Tab label="Your Team" />
           <Tab label="Top Dogs of the Week" />
           <Tab label="Top Dog" />
@@ -81,6 +81,7 @@ const DogsContainer = styled.div`
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
+          border-radius: 10px;
           min-height: 80vh;
           min-width: 70vw;
           display: flex;
