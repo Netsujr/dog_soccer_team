@@ -60,13 +60,17 @@ const DogsContainer = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 30vw;
+  width: 20vw;
   padding: 5px;
   margin: 3px;
   position: relative;
   border: 1px solid black;
   border-radius: 5px;
   background-color: #f5f5f5;
+
+  @media (max-width: 1250px) {
+    width: 30vw;
+  }
 
   .dog {
     display: flex;

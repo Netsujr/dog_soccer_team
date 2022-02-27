@@ -80,8 +80,8 @@ const DogsContainer = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 60vw;
-  padding: 5px;
+  width: fit-content;
+  padding: 45px;
   margin: 3px;
   position: relative;
   border: 1px solid black;
