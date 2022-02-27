@@ -77,35 +77,35 @@ const Home = () => {
 export default Home;
 
 const DogsContainer = styled.div`
-          background-image: url('${field}');
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-          border-radius: 10px;
-          min-height: 80vh;
-          min-width: 70vw;
-          display: flex;
-          flex-wrap: wrap;
-          align-content: start;
-          justify-content: center;
-          `;
+  background-image: url('${field}');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  min-height: 80vh;
+  min-width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  justify-content: center;
+  `;
 
 const HomeContainer = styled.div`
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-          align-items: center;
-          `;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  `;
 
 const ListContainer = styled.div`
-          display: flex;
-          justify-content: space-around;
-          max-width: 65vw;
-          flex-wrap: wrap;
-          `;
+  display: flex;
+  justify-content: space-around;
+  max-width: 65vw;
+  flex-wrap: wrap;
+  `;
 
 const TeamContainer = styled.div`
-          display: flex;
-          max-width: 70vw;
-          min-width: 70vw;
-          `;
+  display: flex;
+  max-width: 70vw;
+  min-width: 70vw;
+  `;

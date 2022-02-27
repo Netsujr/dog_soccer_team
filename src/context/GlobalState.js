@@ -53,12 +53,12 @@ export const GlobalProvider = ({ children }) => {
     });
   }
   //-----------------------------------------------------
-  const capitalizeName = (name) => {
-    dispatch({
-      type: "CAPITALIZE_NAME",
-      payload: name
-    });
-  }
+  // const capitalizeName = (name) => {
+  //   dispatch({
+  //     type: "CAPITALIZE_NAME",
+  //     payload: name
+  //   });
+  // }
   //-----------------------------------------------------
 
   return (
@@ -68,7 +68,7 @@ export const GlobalProvider = ({ children }) => {
         addDog,
         deleteDog,
         editDog,
-        capitalizeName
+        // capitalizeName
       }}>
       {children}
     </GlobalContext.Provider>

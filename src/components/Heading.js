@@ -8,7 +8,7 @@ const Heading = () => {
     <NavbarContainer>
       <Navbar style={{ borderRadius: '15px' }} color="dark" dark>
         <Container className='headingContainer'>
-          <NavbarBrand href="/">Doggy Team</NavbarBrand>
+          <NavbarBrand href="/">Build Your Doggy Team</NavbarBrand>
           <Nav>
             <NavItem>
               <Link className='btn btn-primary' to='/add'>Add Your Dog</Link>
