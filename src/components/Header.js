@@ -62,13 +62,4 @@ const HeaderContainer = styled.header`
     opacity: 0.5;
     z-index: 1;
   }
-
-
-  @media (pointer: coarse) and (hover: none) {
-    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
-
-    video {
-      display: none;
-    }
-  }
   `;
