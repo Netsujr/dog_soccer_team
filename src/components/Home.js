@@ -3,7 +3,7 @@ import DogList from './DogList';
 import Heading from './Heading';
 import DogsFromAPI from './DogsFromAPI';
 import DogFromAPI from './DogFromAPI';
-import field from '../images/footballField.png';
+import field from '../images/soccer_field.jpg';
 import styled from 'styled-components';
 import { Tabs, Tab } from '@material-ui/core';
 import { getBreedsData, getRandomImage } from '../api';
