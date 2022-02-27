@@ -80,7 +80,6 @@ const ButtonsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid yellow; */
   `;
 
 const DogImage = styled.div`
@@ -89,7 +88,6 @@ const DogImage = styled.div`
   justify-content: center;
   max-height: 100px;
   max-width: 100px;
-  /* border: 1px solid pink; */
 
   img {
     max-height: 100px;
@@ -106,7 +104,6 @@ const DogDetails = styled.div`
   justify-content: center;
   height: 100px;
   width: 55%;
-  /* border: 1px solid red; */
 
   p {
     margin: 4px 5px;

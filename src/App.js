@@ -28,10 +28,12 @@ function App() {
 export default App;
 
 const AppContainer = styled.div`
-  height: 100vh;
+  min-height: 150vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
+  background-image: url('https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg?cs=srgb&dl=pexels-jonathan-petersson-399187.jpg&fm=jpg');
+  background-size: cover;
+
   `

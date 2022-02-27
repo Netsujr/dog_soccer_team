@@ -3,7 +3,7 @@ import DogList from './DogList';
 import Heading from './Heading';
 import DogsFromAPI from './DogsFromAPI';
 import DogFromAPI from './DogFromAPI';
-import field from '../images/footballField.png';
+import field from '../images/soccer_field.jpg';
 import styled from 'styled-components';
 import { Tabs, Tab } from '@material-ui/core';
 import { getBreedsData, getRandomImage } from '../api';
@@ -41,7 +41,7 @@ const Home = () => {
         onClick={() => setSelectedTab(0)}
       />
       <HomeContainer>
-        <Tabs style={{ marginBottom: '20px' }} value={selectedTab} onChange={handleChange}>
+        <Tabs style={{ marginBottom: '20px', color: 'white' }} value={selectedTab} onChange={handleChange}>
           <Tab label="Your Team" />
           <Tab label="Top Dogs of the Week" />
           <Tab label="Top Dog" />
@@ -81,13 +81,13 @@ const DogsContainer = styled.div`
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
+          border-radius: 10px;
           min-height: 80vh;
           min-width: 70vw;
           display: flex;
           flex-wrap: wrap;
           align-content: start;
           justify-content: center;
-          /* border: 5px solid red; */
           `;
 
 const HomeContainer = styled.div`
@@ -95,14 +95,12 @@ const HomeContainer = styled.div`
           justify-content: center;
           flex-direction: column;
           align-items: center;
-          /* border: 4px solid green; */
           `;
 
 const ListContainer = styled.div`
           display: flex;
           justify-content: space-around;
           max-width: 65vw;
-          /* border: 1px solid green; */
           flex-wrap: wrap;
           `;
 
@@ -110,5 +108,4 @@ const TeamContainer = styled.div`
           display: flex;
           max-width: 70vw;
           min-width: 70vw;
-          /* border: 1px solid blue; */
           `;
